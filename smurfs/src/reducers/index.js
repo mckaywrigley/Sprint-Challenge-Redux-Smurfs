@@ -16,6 +16,10 @@ export default function(state = initialState, action) {
         ...state,
         smurfs: action.payload
       };
+    case CREATE_SMURF:
+      return {
+        ...state
+      };
     default:
       return state;
   }
