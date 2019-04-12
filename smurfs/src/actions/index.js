@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_SMURFS, CREATE_SMURF } from "./types";
+import { GET_SMURFS, CREATE_SMURF, DELETE_SMURF } from "./types";
 
 export const getSmurfs = () => dispatch => {
   axios
@@ -9,7 +9,6 @@ export const getSmurfs = () => dispatch => {
         type: GET_SMURFS,
         payload: res.data
       });
-      console.log(res.data);
     })
     .catch(err => console.log(err));
 };
@@ -23,5 +22,17 @@ export const createSmurf = newSmurf => dispatch => {
         payload: res.data
       });
     })
+    .catch(err => console.log(err));
+};
+
+export const deleteSmurf = id => dispatch => {
+  axios
+    .delete(`http://localhost:3333/smurfs/${id}`)
+    .then(res =>
+      dispatch({
+        type: DELETE_SMURF,
+        payload: res.data
+      })
+    )
     .catch(err => console.log(err));
 };

@@ -1,4 +1,4 @@
-import { GET_SMURFS, CREATE_SMURF } from "../actions/types";
+import { GET_SMURFS, CREATE_SMURF, DELETE_SMURF } from "../actions/types";
 
 const initialState = {
   smurfs: [],
@@ -18,7 +18,13 @@ export default function(state = initialState, action) {
       };
     case CREATE_SMURF:
       return {
-        ...state
+        ...state,
+        smurfs: action.payload
+      };
+    case DELETE_SMURF:
+      return {
+        ...state,
+        smurfs: action.payload
       };
     default:
       return state;
